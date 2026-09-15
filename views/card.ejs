@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= profile.name %> — Profile Card</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <div class="page">
+    <nav class="topnav">
+      <a href="/" class="brand">🪪 Profile Card Generator</a>
+      <a href="/profiles" class="nav-link">View Gallery</a>
+    </nav>
+
+    <main class="card-wrap">
+      <div class="profile-card">
+        <div class="card-banner"></div>
+
+        <% if (profile.avatar_path) { %>
+          <img class="avatar-img" src="<%= profile.avatar_path %>" alt="<%= profile.name %>'s avatar" />
+        <% } else { %>
+          <div class="avatar-initials" style="background: <%= profile.avatar_color %>;">
+            <%= initials %>
+          </div>
+        <% } %>
+
+        <h1 class="profile-name"><%= profile.name %></h1>
+
+        <% if (bioPreview) { %>
+          <p class="profile-bio"><%= bioPreview %></p>
+        <% } %>
+
+        <% if (skills.length) { %>
+          <div class="skills-list">
+            <% skills.forEach(function(skill) { %>
+              <span class="skill-tag"><%= skill %></span>
+            <% }) %>
+          </div>
+        <% } %>
+
+        <div class="social-links">
+          <% if (profile.github) { %><a href="<%= profile.github %>" target="_blank" rel="noopener">GitHub</a><% } %>
+          <% if (profile.linkedin) { %><a href="<%= profile.linkedin %>" target="_blank" rel="noopener">LinkedIn</a><% } %>
+          <% if (profile.twitter) { %><a href="<%= profile.twitter %>" target="_blank" rel="noopener">Twitter</a><% } %>
+          <% if (profile.portfolio) { %><a href="<%= profile.portfolio %>" target="_blank" rel="noopener">Portfolio</a><% } %>
+        </div>
+
+        <p class="card-id">Card ID: <code><%= profile.id %></code></p>
+      </div>
+
+      <div class="card-actions">
+        <a href="/" class="btn-secondary">Create another</a>
+        <a href="/profiles" class="btn-secondary">View all profiles</a>
+        <form action="/profile/<%= profile.id %>/delete" method="POST" onsubmit="return confirm('Delete this profile?');">
+          <button type="submit" class="btn-danger">Delete</button>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">Built with Node.js, Express, EJS &amp; SQLite</footer>
+  </div>
+</body>
+</html>

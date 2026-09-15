@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Create Your Profile Card</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <div class="page">
+    <nav class="topnav">
+      <a href="/" class="brand">🪪 Profile Card Generator</a>
+      <a href="/profiles" class="nav-link">View Gallery</a>
+    </nav>
+
+    <main class="form-wrap">
+      <h1>Build your profile card</h1>
+      <p class="subtitle">Fill this out and we'll generate a shareable card for you.</p>
+
+      <% if (error) { %>
+        <div class="alert"><%= error %></div>
+      <% } %>
+
+      <form action="/profile" method="POST" enctype="multipart/form-data" class="profile-form">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Gayathri Kumar" required maxlength="60" />
+
+        <label for="bio">Bio</label>
+        <textarea id="bio" name="bio" rows="4" maxlength="500" placeholder="A short bio about you..."></textarea>
+
+        <label for="skills">Skills <span class="hint">(comma-separated)</span></label>
+        <input type="text" id="skills" name="skills" placeholder="Python, Machine Learning, React" />
+
+        <label for="avatar">Avatar Image <span class="hint">(optional — otherwise we generate one from your initials)</span></label>
+        <input type="file" id="avatar" name="avatar" accept="image/*" />
+
+        <fieldset class="socials">
+          <legend>Social Links</legend>
+
+          <label for="github">GitHub</label>
+          <input type="text" id="github" name="github" placeholder="github.com/username" />
+
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" id="linkedin" name="linkedin" placeholder="linkedin.com/in/username" />
+
+          <label for="twitter">Twitter / X</label>
+          <input type="text" id="twitter" name="twitter" placeholder="twitter.com/username" />
+
+          <label for="portfolio">Portfolio Website</label>
+          <input type="text" id="portfolio" name="portfolio" placeholder="yourdomain.com" />
+        </fieldset>
+
+        <button type="submit" class="btn-primary">Generate Card</button>
+      </form>
+    </main>
+
+    <footer class="footer">Built with Node.js, Express, EJS &amp; SQLite</footer>
+  </div>
+</body>
+</html>

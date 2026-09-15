@@ -1,0 +1,27 @@
+{
+  "name": "profile-card-app",
+  "version": "1.0.0",
+  "description": "User Profile Card Generator - Node.js/Express app that takes form input and renders dynamic profile cards, storing records in SQLite.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "express",
+    "profile-card",
+    "nodejs",
+    "sqlite"
+  ],
+  "author": "Gayu",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^11.3.0",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "multer": "^2.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

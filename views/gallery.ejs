@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>All Profiles — Gallery</title>
+  <%- include('partials/head') %>
+</head>
+<body>
+  <div class="page">
+    <nav class="topnav">
+      <a href="/" class="brand">🪪 Profile Card Generator</a>
+      <a href="/" class="nav-link">+ New Profile</a>
+    </nav>
+
+    <main class="gallery-wrap">
+      <h1>All Profile Cards (<%= profiles.length %>)</h1>
+
+      <% if (!profiles.length) { %>
+        <p class="empty-state">No profiles yet. <a href="/">Create the first one</a>.</p>
+      <% } else { %>
+        <div class="gallery-grid">
+          <% profiles.forEach(function(p) { %>
+            <a class="gallery-item" href="/profile/<%= p.id %>">
+              <% if (p.avatar_path) { %>
+                <img class="gallery-avatar-img" src="<%= p.avatar_path %>" alt="<%= p.name %>" />
+              <% } else { %>
+                <div class="gallery-avatar-initials" style="background: <%= p.avatar_color %>;"><%= p.initials %></div>
+              <% } %>
+              <div class="gallery-name"><%= p.name %></div>
+              <div class="gallery-skills"><%= p.skills.slice(0, 3).join(', ') %></div>
+            </a>
+          <% }) %>
+        </div>
+      <% } %>
+    </main>
+
+    <footer class="footer">Built with Node.js, Express, EJS &amp; SQLite</footer>
+  </div>
+</body>
+</html>
