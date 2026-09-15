@@ -107,41 +107,7 @@ database setup needed.
 ---
 
 ## 🌐 Deploying for the "Live Demo Link"
-
-This app is a plain Node/Express server with a file-based SQLite DB, so it
-deploys cleanly to any Node host. Two easy free options:
-
-### Option A — Render.com
-1. Push this repo to GitHub.
-2. On [render.com](https://render.com) → **New → Web Service** → connect
-   your GitHub repo.
-3. Build command: `npm install`
-   Start command: `npm start`
-4. Deploy — Render gives you a public URL like
-   `https://profile-card-app.onrender.com`.
-
-> ⚠️ Render's free tier has an **ephemeral filesystem** — the SQLite file
-> resets on redeploy/restart. That's fine for a demo. For real persistence,
-> swap in a hosted Postgres (e.g. Render's free Postgres, or Supabase) —
-> only `db/database.js` needs to change.
-
-### Option B — Railway.app
-1. Push to GitHub → [railway.app](https://railway.app) → **New Project →
-   Deploy from GitHub repo**.
-2. Railway auto-detects Node, runs `npm install && npm start`.
-3. Add a generated public domain from the service settings.
-
----
-
-## 📦 Submission Checklist
-
-- [x] HTML form capturing Name, Bio, Skills, Social Links, avatar upload
-- [x] Node.js server processes input (string manipulation helpers)
-- [x] Dynamic HTML profile card + avatar preview rendered per submission
-- [x] Profile records persisted in a database (SQLite)
-- [ ] Push this folder to a GitHub repository
-- [ ] Deploy (Render/Railway/etc.) and grab the live demo URL
-- [ ] Submit both links
+Live link:https://profile-card-app-etx9.onrender.com
 
 ---
 
